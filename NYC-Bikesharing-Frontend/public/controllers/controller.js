@@ -122,7 +122,7 @@ APIFetchController.controller('dashboardCtrl', ['$scope', '$timeout','dataServic
                data: $scope.currentUsage,
                xkey: 'name',
                ykeys: ['capacity'],
-               labels: ['Current Usage'],
+               labels: ['Current Usage','Capacity'],
                fillOpacity: 0.6,
                hideHover: 'auto',
                parseTime: false,
