@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html ng-app="webApp">
+<head>
+  <title>NYC Bike Sharing Dashboard</title>
+
+  <link href="css/gis/leaflet.css" rel="stylesheet">
+  <link href="css/gis/Control.FullScreen.css" rel="stylesheet">
+  <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
+  <!--[if IE 9]>
+  <link href="css/application-ie9-part2.css" rel="stylesheet">
+  <![endif]-->
+
+  <link href="js/morris/morris.css" rel="stylesheet">
+    <link href="css/application.css" rel="stylesheet">
+
+
+  <link rel="shortcut icon" href="images/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <script>
+    /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
+     chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
+     https://code.google.com/p/chromium/issues/detail?id=332189
+     */
+  </script>
+
+
+<style>
+    /*-- Loader: When page load first time --*/
+    .loading-wrapper{
+        position: fixed;
+        z-index: 200000;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    .loading-overlay{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: rgba(35,184,229,0.5);
+    }
+    .loading-overlay img{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 45%;
+        width: 50px;
+        margin: auto;
+    }
+</style>
+
+
+</head>
+<body>
+<!--
+  Main sidebar seen on the left. may be static or collapsing depending on selected state.
+
+    * Collapsing - navigation automatically collapse when mouse leaves it and expand when enters.
+    * Static - stays always open.
+-->
+<nav id="sidebar" class="sidebar" role="navigation">
+  <!-- need this .js class to initiate slimscroll -->
+  <div class="js-sidebar-content">
+
+
+
+
+    <!-- seems like lots of recent admin template have this feature of user info in the sidebar.
+         looks good, so adding it and enhancing with notifications -->
+    <div class="sidebar-status visible-xs">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="thumb-sm avatar pull-right">
+                    <img class="img-circle" src="images/a5.jpg" alt="...">
+                </span>
+
+        <b class="caret"></b>
+      </a>
+      <!-- #notifications-dropdown-menu goes here when screen collapsed to xs or sm -->
+    </div>
+    <!-- main notification links are placed inside of .sidebar-nav -->
+    <ul class="sidebar-nav">
+      <li class="active">
+        <!-- an example of nested submenu. basic bootstrap collapse component -->
+        <a href="#sidebar-dashboard" data-toggle="collapse" data-parent="#sidebar">
+                    <span class="icon">
+                        <i class="fa fa-desktop"></i>
+                    </span>
+          NYC Bike Sharing
+          <i class="toggle fa fa-angle-down"></i>
+        </a>
+        <ul id="sidebar-dashboard" class="collapse in">
+          <li class="active"><a ui-sref="dashboard"><!--Map-->Dashboard</a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+<!-- This is the white navigation bar seen on the top. A bit enhanced BS navbar. See .page-controls in _base.scss. -->
+
+<div class="content-wrap">
+  <!-- main page content. the place to put widgets in. usually consists of .row > .col-md-* > .widget.  -->
+    <main id="content" class="content" role="main">
+        <div class="main" ui-view></div>
+    </main>
+</div>
+
+<!-- The Loader. Is shown when pjax happens -->
+<div class="loader-wrap hiding hide">
+  <i class="fa fa-circle-o-notch fa-spin-fast"></i>
+</div>
+
+<!-- Loader: When page load first time -->
+<div class="loading-wrapper hide">
+    <div class="loading-overlay">
+        <img src="../images/loading.gif" alt="Loading..." />
+    </div>
+</div>
+
+
+
+<!-- common libraries. required for every page-->
+<script src="js/jquery/jquery.min.js"></script>
+<script src="js/jquery/jquery.pjax.js"></script>
+<script src="js/jquery/jquery.slimscroll.min.js"></script>
+<script src="js/morris/morris.js"></script>
+
+<!-- common app js -->
+<script src="js/angular/angular.min.js"></script>
+<script src="js/angular/angular-ui-router.min.js"></script>
+<script src="app.js"></script>
+
+<!-- page specific libs -->
+<script id="test" src="js/underscore.js"></script>
+<script src="js/raphael-min.js"></script>
+<script src="js/jquery/jquery.mapael.js"></script>
+<script src="js/jquery/jquery.animateNumber.min.js"></script>
+<script src="js/gis/leaflet.js"></script>
+<script src="js/gis/Control.FullScreen.js"></script>
+<!--<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>-->
+
+<script src="controllers/controller.js"></script>
+<script src="services/services.js"></script>
+
+<script src="vendor/jquery.sparkline/index.js"></script>
+<script src="vendor/skycons/skycons.js"></script>
+
+<script src="js/jquery/jquery.flot.js"></script>
+<script src="js/MetroJs.js"></script>
+<script src="js/skycons.js"></script>
+
+
+
+</body>
+</html>
